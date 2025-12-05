@@ -109,7 +109,7 @@ jobs:
           cp "$target" "$tmpfile"
 
           # Find the line number of the header row
-          header_line=$(grep -n '| Version' "$tmpfile" | grep 'Code name' | grep 'Real-time Kernel Version' | head -n1 | cut -d: -f1 || true)
+          header_line=$(grep -n 'Version' "$tmpfile" || true)
 
           if [ -z "$header_line" ]; then
             echo "Table header not found" >&2
@@ -162,7 +162,7 @@ jobs:
           fi
 
           # Build new row string, preserving the number of columns and a simple spacing style
-          new_row=$(printf '| %s | %s | %s | %s |\n' "$VERSION" "$CODENAME" "$KERNEL" "$(printf '%s\n' "$last_row" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $5); print $5}')")
+          new_row=$(printf '| %s | %s | %s | %s | %s|\n' "$VERSION" "$CODENAME" "$KERNEL" "generic" "$(printf '%s\n' "$last_row" | awk -F'|' '{gsub(/^[ \t]+|[ \t]+$/, "", $5); print $5}')")
 
           # Replace line in file
           awk -v line="$last_row_line" -v repl="$new_row" '
