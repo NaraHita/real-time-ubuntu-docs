@@ -60,7 +60,7 @@ jobs:
             awk '
               /kernelReleases *= *\[/ { in_array=1 }
               in_array && /taskVersion:/ {
-                match($0, /taskVersion:[[:space:]]*"[^\"]*"/, m)
+                match($0, /taskVersion:[[:space:]]*"[^"]*"/, m)
                 if (m[0] != "") {
                   gsub(/taskVersion:[[:space:]]*"/, "", m[0])
                   gsub(/"$/, "", m[0])
