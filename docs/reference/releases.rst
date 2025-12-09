@@ -24,7 +24,11 @@ Ubuntu Server / Desktop
      - Plucky Puffin
      - 6.14
      - generic
-
+   * - Ubuntu 25.10 
+     - Questing Quokka 
+     - 6.17 
+     - generic 
+ 
 .. note::
 
   The LTS releases of Ubuntu support newer kernel versions. Those are available as Hardware Enablement (HWE) kernels; see `Ubuntu kernel lifecycle`_.
