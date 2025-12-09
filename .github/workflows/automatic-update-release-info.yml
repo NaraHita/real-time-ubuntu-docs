@@ -161,10 +161,10 @@ jobs:
           echo "last_kernel_row is $last_kernel_row"
           
           # Break row into fields between pipes, trimming spaces
-          # Expect something like: | Ubuntu 25.10 | Questing Quokka | 6.17 | generic |
-          current_version=$(printf '%s\n' "$last_version_row" | sed 's/^[[:space:]]*\* -[[:space:]]*//')
-          current_codename=$(printf '%s\n' "$last_codename_row" | sed 's/^[[:space:]]*-[[:space:]]*//')
-          current_kernel=$(printf '%s\n' "$last_kernel_row" | sed 's/^[[:space:]]*-[[:space:]]*//')
+          # Expect something like: | Ubuntu 25.10 | Questing Quokka | 6.17 |
+          current_version=$(printf '%s\n' "$last_version_row" | sed 's/^[[:space:]]*\* -[[:space:]]*//' | sed 's/[[:space:]]*$//')
+          current_codename=$(printf '%s\n' "$last_codename_row" | sed 's/^[[:space:]]*-[[:space:]]*//' | sed 's/[[:space:]]*$//')
+          current_kernel=$(printf '%s\n' "$last_kernel_row" | sed 's/^[[:space:]]*-[[:space:]]*//' | sed 's/[[:space:]]*$//')
 
           echo "current_version is :$current_version, VERSION is: $VERSION"
           echo "current_codename is :$current_codename, CODENAME is: $CODENAME"
